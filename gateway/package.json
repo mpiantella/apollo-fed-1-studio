@@ -1,0 +1,26 @@
+{
+  "name": "gateway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@apollo/gateway": "^0.48.1",
+    "apollo-server": "^3.6.3",
+    "concurrently": "^5.1.0",
+    "esm": "^3.2.25",
+    "graphql": "^15.0.0",
+    "nodemon": "^2.0.2",
+    "wait-on": "^4.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "concurrently -k npm:dev:*",
+    "start:subgraphs": "concurrently -k npm:dev:people npm:dev:films",
+    "dev:people": "nodemon -r esm ../people/index.js",
+    "dev:films": "nodemon -r esm ../films/index.js",
+    "dev:gateway": "wait-on tcp:4001 tcp:4002 && nodemon -r esm ./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
