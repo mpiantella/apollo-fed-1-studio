@@ -8,6 +8,7 @@ const typeDefs = gql`
 type Film {
   id: ID!
   title: String
+  description: String
   actors: [Person]
   director: Person
 }

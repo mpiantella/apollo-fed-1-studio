@@ -92,5 +92,9 @@ query ExampleQuery {
 }
 ```
 
+See pipeline for bitbucket: https://www.apollographql.com/docs/rover/ci-cd/#bitbucket-pipelines
+
+https://www.apollographql.com/docs/federation/enterprise-guide/change-management/
+
 
 [1]:https://dev.to/mandiwise/getting-started-with-apollo-federation-and-gateway-4739
