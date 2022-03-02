@@ -4,26 +4,8 @@ const { films } = require("../data.js");
 
 const port = 4002;
 
-const typeDefs = gql`
-type Film {
-  id: ID!
-  title: String
-  description: String
-  actors: [Person]
-  director: Person
-}
-
-extend type Person @key(fields: "id") {
-  id: ID! @external
-  appearedIn: [Film]
-  directed: [Film]
-}
-
-extend type Query {
-  film(id: ID!): Film!
-  films: [Film]
-}
-`
+const { readFileSync } = require("fs");
+const typeDefs = gql(readFileSync(`${__dirname}/schema.graphql`,'UTF-8'));
 
 const resolvers = {
   Film: {

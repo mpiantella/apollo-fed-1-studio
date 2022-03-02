@@ -1,22 +1,11 @@
 const { ApolloServer, gql } = require("apollo-server");
 const { buildSubgraphSchema } = require('@apollo/subgraph');
 const { people } = require("../data.js");
-// const fs = require("fs");
-// fs.readFileSync('./schema.graphql', 'utf8');
 
 const port = 4001;
 
-const typeDefs = gql`
-type Person @key(fields: "id") {
-  id: ID!
-  name: String
-}
-
-extend type Query {
-  person(id: ID!): Person
-  people: [Person]
-}
-`
+const { readFileSync } = require("fs");
+const typeDefs = gql(readFileSync(`${__dirname}/schema.graphql`,'UTF-8'));
 
 const resolvers = {
   Person: {
